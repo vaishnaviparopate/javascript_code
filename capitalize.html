@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>capitialize</title>
+</head>
+<body>
+    <h1>Caapitialize</h1>
+    <div>
+        <input type="text" placeholder="Enter the sentence" id="input">
+        <button id="btn"> Captialize</button>
+        <button id="output"> Reverse</button>
+        <button id="reverse"> reverseLine</button>
+    </div>
+    <script>
+        let input=document.getElementById("input")
+        let btn=document.getElementById("btn")
+        let reverse=document.getElementById("reverse")
+        btn.addEventListener("click",()=>{
+            let inputValue=input.value;
+            let res=capitalize(inputValue);
+            output.innerHTML=`<h2>${res}<h2>`;
+        });
+        function capitalize(res){
+            // let s="this is javascript"
+            let s1=s[0].toUpperCase()
+            let s2="";
+            for (let i=1; i<s.length; i++){
+                if (s[i-1]==" "){
+                    s2=s2+s[i].toUpperCase()
+                }
+            else{
+                s2=s2+s[i]
+            }
+            
+            }
+            console.log(capitalize(res))
+
+        }
+    </script>
+</body>
+</html>

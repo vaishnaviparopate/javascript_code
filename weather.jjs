@@ -1,0 +1,20 @@
+// let p = fetch("https://goweather.herokuapp.com/weather/ny")
+// p.then((value1)=>{
+// return value1.json()
+// }).then((value2)=>{
+//     console.log(value2)
+// })
+
+let input = document.getElementById("city");
+let button = document. getElementById("btn");
+let key = `10b6c0f53e4a14509206becd4d77b865`
+
+button.addEventListener("click",()=>{
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${key}`)
+    .then((response)=>{
+        return response.json();
+    }).then((data)=>{
+        console.log(data)
+    })
+    
+})

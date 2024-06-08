@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>From</title>
+    <style>
+        .container{
+            height:500px;
+            width:500px;
+            background-color: darkseagreen;
+            position: relative;
+            left:200px
+        }
+        .form{
+            font-size: 20px;
+            position: relative;
+            left: 30px;
+            top:20px
+        }
+        #button{
+            width:150px;
+            height: 40px;
+            position: relative;
+            left: 30px;
+            top: 20px;
+        }
+        #username{
+            width: 250px;
+            height:27px
+        }
+        #password{
+            width: 250px;
+            height:27px
+        }
+        #show{
+            border: 1px solid rgb(148, 139, 140);
+            width:400px;
+            height:200px;
+            margin-left: 20px;
+            margin-top: 60px;
+        }
+    </style>
+<body>
+    <div class="container">
+    <form class="form">
+        <label for="username">UserName :</label>
+        <input type="text" placeholder="Emil-id" id="username" name="username"><br><br>
+        <label for="password">Password :</label>
+        <input type="password" placeholder="password" id="password" name="password"><br><br>
+
+        <button type="button" id="button">submit</button>
+    </form>
+    <div id="show" class="show"></div>
+</div>
+
+<script>
+    let button = document.getElementById("button")
+    let show = document.getElementById("show")
+
+    button.addEventListener("click", () =>{
+        let username = document.getElementById("username").value;
+        let password = document.getElementById("password").value;
+        
+        show.innerHTML =`Username :${username} <br><br>Password : ${password}`
+       })
+
+</script>
+</body>
+</html>
+
+
+
+
+
+
+

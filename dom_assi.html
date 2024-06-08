@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>assigment</title>
+    <style>
+        .container{
+            height:400px;
+            width:500px;
+            border:1px solid black;
+            position: relative;
+            left:400px;
+            
+
+        }
+        .box{
+            height:200px;
+            width:200px;
+            border:1px solid black;
+            position: relative;
+            left:150px;
+            top:20px;
+        }
+        #btn{
+            height:50px;
+            width:100px;
+            border:1px solid black;
+            position: relative;
+            left:190px;
+            top:40px;
+        }
+    </style>
+</head>
+<body>
+    <div  class="container">
+        <div class="box"></div>
+        <button id="btn">Change Color</button>
+    </div>
+    
+    <script>
+        let boxColor=document.querySelector(".box")
+        let button=document.getElementById("btn")
+        const colors=["red","yellow","pink","green","orange","purple"]
+        let index=0
+        button.addEventListener("click",()=>{
+            boxColor.style.backgroundColor=colors[index];
+            index=index+1
+            if(index>colors.length){
+                index=0
+            }
+            
+        })
+    </script>
+</body>_
+</html>

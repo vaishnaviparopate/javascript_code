@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form_validation</title>
+    <style>
+        .formdesign{
+            margin: 10px;
+        }
+        .formerror{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <form action="/myaction.php" name="myForm" onsubmit="return validateForm()">
+        <div class="formdesign" id="name">
+            Name :<input type="text" name="fname"><span class="formerror"></span>
+        </div>
+        <div class="formdesign" id="email">
+            Email :<input type="email" name="femail"><span class="formerror"></span>
+        </div>
+        <div class="formdesign" id="phone">
+            Phone :<input type="number" name="fphone"><span class="formerror"></span>
+        </div>
+        <div class="formdesign" id="password">
+            password :<input type="password" name="fpassword"><span class="formerror"></span>
+        </div>
+        <div class="formdesign" id="cpassword">
+            Confirm password :<input type="password" name="fcpassword"><span class="formerror"></span>
+        </div>
+       <input class="button" type="submit" value="submit">
+    </form>
+    <script>
+        function validateForm(){
+            clearErrors();
+            let  returnval=true;
+            
+            let name= document.forms["myForm"]["fname"].value;
+            if(name.length < 3){
+                seterror("name","Length of name is too short")
+                returnval= false
+            }
+            // console.log(name);
+            // return false;
+            let email=document.forms["myForm"]['femail'].value;
+            if(!email.endsWith(".com")){
+                seterror("email","*email is not valid");
+                returnval= false;
+            }
+
+            let phone=document.forms["myForm"]['fphone'].value;
+            if(phone.length<10){
+                seterror("phone","*phone number should be 10 number");
+                returnval= false;
+            }
+            if (!["7","8","9"].includes(phone.charAt(0))){
+                seterror("phone","*phone number should be starts with 9,7,8 number");
+                returnval= false;
+            }
+            let password=document.forms["myForm"]["fpassword"].value;
+            if(password.length < 6){
+                seterror("password","*Password should be of atleast 6 characters");
+                returnval= false;
+            }
+            let cpass=document.forms["myForm"]['fcpassword'].value;
+            if(password != cpass){
+                seterror("cpassword","*Password and confirm password should match");
+                returnval= false;
+
+            }
+            
+            return returnval;
+        }
+
+        function seterror(id,error){
+            let element=document.getElementById(id);
+            element.getElementsByClassName("formerror")[0].innerHTML=error;
+
+        }
+        function clearErrors(){
+            errors=document.getElementsByClassName("formerror");
+            for(let item of errors){
+                item.innerHTML="";
+            }
+        }
+
+    </script>
+</body>
+</html>

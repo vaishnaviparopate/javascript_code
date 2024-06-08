@@ -1,0 +1,69 @@
+<!-- document.body.childNodes -->
+<!-- let cont=document.body.childNodes[1] -->
+<!-- cont.lastChild  //#text -->
+<!-- cont.firstChild  //#text -->
+<!--cont.firstElementChild -->
+<!-- cont.lastElementChild.style.color="green" -->
+<!-- cont.lastElementChild.parentElement -->
+<!-- cont.firstElementChild.parentElement -->
+<!-- document.body.firstElementChild.children -->
+<!-- document.body.firstElementChild.children[0] -->
+<!-- document.body.firstElementChild.children[0].nextElementSibling -->
+<!-- document.body.firstElementChild.children[0].nextSibling -->
+<!-- document.body.firstElementChild.children[0].previousElementSibling -->
+<!-- document.body.firstElementChild.nextSibling.nextSibiling -->
+<!-- document.body.children[1].row -->
+<!-- document.body.children[1].caption -->
+<!-- node list and html collection -->
+<!-- when we write childreen that time we get elemeents(div) -->
+<!-- document.body.children[1] (for table)-->
+<!-- document.body.children[1].rows -->
+<!-- document.body.children[1].caption -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Module</title>
+   <style>
+    .box{
+        width:50px;
+        height:50px;
+        border:2px solid red;
+        margin:3px;
+
+    }
+    .container{
+        display: flex;
+    }
+   </style>
+</head>
+<body>
+    <div class="container">
+       <div class="box">box1</div> 
+       <div class="box">box2</div>   <!--hjhjd!-->
+       <div class="box">box3</div>
+       <div class="box">box4</div>
+       <div class="box">box5</div>
+    </div>
+    <table>
+        <tr>
+            <th>name</th>
+            <th>age</th>
+        </tr>
+        <tr>
+            <td>jia</td>
+            <td>20</td>
+        </tr>
+        
+    </table>
+    
+</body>
+<script src="./dom.js">
+    // document.title="DOM"
+    // console.log(document.title)
+</script>
+
+</html>

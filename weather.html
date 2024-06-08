@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>weather</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        .container {
+            background-image: url("images/sunny.jpg");
+            background-size: cover;
+            background-position: center;
+            width: 500px;
+            height: 700px;
+            border: 2px solid rgb(185, 181, 181);
+            border-radius: 20px;
+            position: relative;
+            left:300px;
+        }
+        .heading {
+            height: 200px;
+            color: rgb(219, 215, 207);
+            position: relative;
+            left: 10px;
+        }
+        .degree {
+            height: 200px;
+            width: 400px;
+            /* border: 2px solid black; */
+            position: relative;
+            left: 50px;
+        }
+        .img1 {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+        .degree1 {
+            font-size: 100px;
+            color: rgb(219, 215, 207);
+            position: relative;
+            bottom: 270px;
+            left: 200px;
+            padding: 10px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .s1 {
+            font-size: 50px;
+        }
+        .s2 {
+            font-size: 20px;
+        }
+        .para {
+            color: rgb(219, 215, 207);
+            font-size: 20px;
+            position: relative;
+            left: 20px;
+            bottom: 20px;
+        }
+        .d1 {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            padding: 20px;
+            position: relative;
+        }
+        .days {
+            color: rgb(128, 125, 121);
+            font-size: 20px;
+            padding: 20px;
+        }
+        a {
+            padding: 20px;
+        }
+        .celcius {
+            font-size: 30px;
+            color: rgb(128, 125, 121);
+            position: relative;
+            left: 15px;
+        }
+        .searches {
+            color: black;
+        }
+        .weather_info {
+            color:rgb(231, 229, 226);
+            font-size: 40px;
+            margin: 20px;
+            width: 400px;
+            height: auto;
+            
+            padding: 10px;
+            /* background-color: rgba(21, 102, 209, 0.5); */
+        }
+        #city{
+            width: 200px;
+            height:30px;
+            border-radius: 20px;
+            border: 2px solid rgb(140, 196, 140);
+        }
+        #btn{
+            width: 60px;
+            height:30px;
+            border-radius: 20px;
+            border: 2px solid rgb(140, 196, 140);
+        
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="searches">
+            <input type="text" id="city" placeholder="Enter city name">
+            <button id="btn"><i class="fas fa-search"></i></button>
+        </div>
+        <div id="weather_info" class="weather_info"></div>
+        <!-- <div class="heading">
+            <h1 class="s1">New York</h1>
+            <h3 class="s2">THURSDAY , MAY 31</h3>
+            <h3 class="s3">03:35 AM</h3>
+        </div>  -->
+        <div class="degree">
+           <img src="images/cloud 2.png" class="img1">
+           <p class="para">CLOUDY</p> 
+           <h3 class="degree1">39<sup> °C</sup></h3>
+        </div>
+        <div class="days">
+            <a>MON</a>
+            <a>TUE</a>
+            <a>WED</a>
+            <a>THU</a>
+            <a>FRI</a>
+        </div>
+        <div class="symbol">
+            <img src="images/rain1.jpg" class="d1">
+            <img src="images/thunder1.png" class="d1">
+            <img src="images/img_w1.jpg" class="d1">
+            <img src="images/img_w2.png" class="d1">
+            <img src="images/img_w.jpg" class="d1">
+        </div>
+        <div class="celcius">
+            <a>33<sup>°</sup></a>
+            <a>27<sup>°</sup></a>
+            <a>23<sup>°</sup></a>
+            <a>41<sup>°</sup></a>
+            <a>36<sup>°</sup></a>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let input = document.getElementById("city");
+            let button = document.getElementById("btn");
+            let key = `10b6c0f53e4a14509206becd4d77b865`;
+
+            button.addEventListener("click", () => {
+                  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${key}`)
+                    .then(response => response.json())
+                    .then((data) => {
+                        if (data.cod !== 200) {
+                            throw new Error(data.message);
+                        }
+                        let result = document.getElementById("weather_info");
+                        result.innerHTML = `City: ${data.name} <br> Temperature: ${(data.main.temp - 273.15).toFixed(2)}°C`;
+                    })
+                    .catch(error => {
+                        console.error(`Error:`, error);
+                        let result = document.getElementById("weather_info");
+                        result.innerHTML = `Error: ${error.message}`;
+                    });
+            });
+        });
+
+
+        async function fetchingdata(){
+            let response = await fetch(url)
+            console.log("data is being fetched")
+            let jsondata=await response.json();
+            console.log("data is being converted into json")
+            console.log(jsondata)
+
+        }
+        fetchingdata()
+            
+    </script>
+</body>
+</html>
